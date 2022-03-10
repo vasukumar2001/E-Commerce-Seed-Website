@@ -1,0 +1,37 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<Khareedo.Models.Product>
+@{
+    ViewBag.Title = "Categorylist";
+}
+
+
+<section id="aa-catg-head-banner">
+    <img src="~/Content/img/fashion/fashion-header-bg-8.jpg" alt="fashion img">
+    <div class="aa-catg-head-banner-area">
+        <div class="container">
+            <div class="aa-catg-head-banner-content">
+                <h2>Category</h2>
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li class="active">Categroy</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<center>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h4>
+                <ul class="aa-catg-nav">
+                    @foreach (var item in ViewBag.Categories)
+                    {
+            <li><a href="@Url.Action("GetProductsByCategory","Product", new { categoryName = item })">@item</a></li>
+}
+                </ul>
+            </h4>
+        </div>
+    </div>
+    </center>

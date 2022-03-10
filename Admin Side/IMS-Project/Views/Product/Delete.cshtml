@@ -1,0 +1,158 @@
+﻿@model IMS_Project.Models.Product
+
+@{ ViewBag.Title = "Product";
+                ViewBag.SubTitle = "Delete"; }
+
+<h3>Are you sure you want to delete this?</h3>
+<hr />
+@Html.HiddenFor(model => model.ProductID)
+
+<div class="row">
+    <div class="col-md-8">
+        <dl class="dl-horizontal ">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.QuantityPerUnit)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.QuantityPerUnit)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UnitPrice)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.OldPrice)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OldPrice)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UnitWeight)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UnitWeight)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Size)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Size)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UnitInStock)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UnitInStock)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UnitOnOrder)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UnitOnOrder)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductAvailable)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductAvailable)
+            </dd>
+
+          
+            <dt>
+                @Html.DisplayNameFor(model => model.AddBadge)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AddBadge)
+            </dd>
+
+           
+            <dt>
+                @Html.DisplayNameFor(model => model.ShortDescription)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ShortDescription)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LongDescription)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LongDescription)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Picture1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Picture1)
+            </dd>
+
+           
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubCategory.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubCategory.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Supplier.CompanyName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Supplier.CompanyName)
+            </dd>
+
+
+        </dl>
+    </div>
+    
+</div>
+@using (Html.BeginForm("Delete", "Product", new { id = @Model.ProductID }, FormMethod.Post))
+{
+@Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+                    <input type="submit" value="Delete" class="btn btn-danger " />
+                </div>}
+

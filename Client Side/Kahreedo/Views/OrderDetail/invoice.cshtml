@@ -1,0 +1,132 @@
+﻿@using Khareedo.Models;
+@model Tuple<Order, IEnumerable<OrderDetail>>
+@{ ViewBag.Title = "invoice";
+    Layout = "~/Views/Shared/_invoice.cshtml"; }
+<link rel="stylesheet" href="~/Content/css/pdf.css" />
+<script src="~/Content/js/pdf.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+<div class="container d-flex justify-content-center mt-50 mb-50 ">
+    <div class="row">
+        <div class="col-md-12 text-right mb-3">
+          
+
+            <button class="btn btn-info hidden-print" onclick="generatePDF()"> download pdf</button>
+        </div>
+        <div class="col-md-12">
+            <div class="card" id="invoice">
+                <div class="card-header bg-transparent header-elements-inline">
+                    <h6 class="card-title text-primary">Invoice</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-4 pull-left">
+
+                                <ul class="list list-unstyled mb-0 text-left">
+                                    <li>Address:-</li>
+                                    <li>
+                                        <h5 class="my-2">Abc Seeds Pvt.Ltd</h5>
+                                    </li>
+                                    <li>
+                                        rajkot, gujarat ,india.
+                                    </li>
+                                    <li>
+                                        012-2223-6518
+                                    </li>
+                                    <li>help@shop.com</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-4 ">
+                                <div class="text-sm-right">
+                                    <h4 class="invoice-color mb-2 mt-md-2">
+                                       Order Id: @Html.DisplayFor(model => model.Item1.OrderID)
+                                    </h4>
+                                    <ul class="list list-unstyled mb-0">
+                                        <li>Date/Time: <span class="font-weight-semibold">@Html.DisplayFor(model => model.Item1.OrderDate)</span></li>
+                                        <li>Payment ID: @Html.DisplayFor(model => model.Item1.PaymentID)</li>
+                                        <li>Shipping ID: @Html.DisplayFor(model => model.Item1.ShippingID)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-md-flex flex-md-wrap">
+                        <div class="mb-4 mb-md-2 text-left">
+                            <span class="text-muted">Invoice To:-</span>
+                            <ul class="list list-unstyled mb-0">
+                                <li>
+                                    <h5 class="my-2">@Html.DisplayFor(model => model.Item1.Customer.First_Name)</h5>
+                                </li>
+                                <li><span class="font-weight-semibold">@Html.DisplayFor(model => model.Item1.Customer.Address1)</span></li>
+                                <li>@Html.DisplayFor(model => model.Item1.Customer.City)</li>
+                                <li>@Html.DisplayFor(model => model.Item1.Customer.State)</li>
+                                <li>@Html.DisplayFor(model => model.Item1.Customer.Country)</li>
+                                <li>@Html.DisplayFor(model => model.Item1.Customer.Mobile1)</li>
+                                <li><a href="#" data-abc="true">@Html.DisplayFor(model => model.Item1.Customer.Email)</a></li>
+
+                            </ul>
+                        </div>
+                   
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-lg">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int i = 0;}
+                            @foreach (var item in Model.Item2)
+                            {
+                                i++;
+                                <tr>
+                                    <td>@i.ToString()</td>
+                                    <td>@item.Product.Name</td>
+                                    <td>@item.Quantity</td>
+                                    <td>₹@item.UnitPrice</td>
+                                    <td>₹@item.TotalAmount</td>
+                                </tr>
+}
+                        </tbody>
+                  
+                    </table>
+                </div>
+                <div class="card-body">
+                    <div class="d-md-flex flex-md-wrap">
+                        <div class="pt-2 mb-3 wmin-md-400 ml-auto">
+                            <h6 class="mb-3 text-left">Total due</h6>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th class="text-left">Total Items:</th>
+                                            <td class="text-right">@ViewBag.TotalItems</td>
+                                        </tr>
+                                       
+                                        <tr>
+                                            <th class="text-left">Total:</th>
+                                            <td class="text-right text-primary">
+                                                <h5 class="font-weight-semibold">₹@ViewBag.TAmount</h5>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
