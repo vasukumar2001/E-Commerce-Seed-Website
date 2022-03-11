@@ -41,6 +41,8 @@ namespace Khareedo.Controllers
                 int qty = Convert.ToInt32(formcoll["Qty-" + i + ""]);
                 ODetails.Quantity = qty;
                 ODetails.UnitPrice = ODetails.UnitPrice;
+                ODetails.Discount=ODetails.Discount;
+
                 ODetails.TotalAmount = qty * ODetails.UnitPrice;
                 TempShpData.items.RemoveAll(x => x.ProductID == pID);
 

@@ -23,12 +23,12 @@ namespace Khareedo.Controllers
             int? SubTotal = Convert.ToInt32(data.Sum(x => x.TotalAmount));
             controller.ViewBag.Total = SubTotal;
 
-            int Discount = 0;
+            int Discount = Convert.ToInt32(data.Sum(x => x.Discount));
             controller.ViewBag.SubTotal = SubTotal;
             controller.ViewBag.Discount = Discount;
             controller.ViewBag.TotalAmount = SubTotal - Discount;
 
-            controller.ViewBag.WlItemsNo = db.Wishlists.Where(x => x.CustomerID == TempShpData.UserID).ToList().Count();
+            controller.ViewBag.WlItemsNo = db.Wishlists.Where(x => x.CustomerID == TempShpData.UserID).ToList();
             return data;
         }
     }

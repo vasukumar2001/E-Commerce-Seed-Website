@@ -78,7 +78,11 @@ namespace Khareedo.Controllers
             OD.ProductID = id;
             int Qty = 1;
             decimal price = db.Products.Find(id).UnitPrice;
+            decimal dicount = Convert.ToInt32(db.Products.Find(id).Discount);
+
+            
             OD.Quantity = Qty;
+            OD.Discount=dicount;
             OD.UnitPrice = price;
             OD.TotalAmount = Qty * price;
             OD.Product = db.Products.Find(id);

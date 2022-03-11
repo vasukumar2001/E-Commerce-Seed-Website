@@ -157,9 +157,12 @@
                                                     <th>Subtotal</th>
                                                     <td>@ViewBag.SubTotal</td>
                                                 </tr>
-                                            
                                                 <tr>
-                                                    @Html.Hidden("totalAmount", null,new { @value=ViewBag.TotalAmount })
+                                                    <th>Discount</th>
+                                                    <td>@ViewBag.Discount</td>
+                                                </tr>
+                                                <tr>
+                                                    @Html.Hidden("totalAmount", null, new { @value = ViewBag.TotalAmount })
                                                     <th>Total</th>
                                                     <td>@ViewBag.TotalAmount</td>
                                                 </tr>
