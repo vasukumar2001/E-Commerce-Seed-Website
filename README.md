@@ -1,5 +1,6 @@
 Customer website:- username: vasu123
                  password: Vasu@123
+                 
 Admin website:- username: admin
                  password: admin               
 Project Demo:
